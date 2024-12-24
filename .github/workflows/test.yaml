@@ -7,7 +7,7 @@ on:
 
 jobs:
   scale-test:
-    runs-on: runner
+    runs-on: sh-k8s-runner
     strategy:
       matrix:
         job: [1, 2, 3, 5, 6]

@@ -1,28 +1,26 @@
-# runnerdeployment.yaml
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  name: runner
   namespace: actions-runner-system
+  name: sh-runner-deployment
 spec:
-  replicas: 1 # This will deploy 2 runners
   template:
     spec:
-      repository: hoanglh2/test-cicd # specify name of the repository]
+      repository: hoanglh2/test-cicd
       labels:
-        - runner # runner label
+        - sh-k8s-runner
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
 metadata:
-  name: arc-runner-hra
   namespace: actions-runner-system
+  name: sh-runner-deployment-autoscaler
 spec:
-  minReplicas: 1
-  maxReplicas: 10
   scaleTargetRef:
     kind: RunnerDeployment
-    name: runner
+    name: sh-runner-deployment
+  minReplicas: 1
+  maxReplicas: 4
   metrics:
     - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
       repositoryNames:
