@@ -8,7 +8,9 @@ spec:
   replicas: 1 # This will deploy 2 runners
   template:
     spec:
-      repository: hoanglh2/test-cicd # specify name of the repository
+      repository: hoanglh2/test-cicd # specify name of the repository]
+      labels:
+        - runner # runner label
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
