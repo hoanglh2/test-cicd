@@ -1,7 +1,7 @@
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  namespace: actions-runner-system
+  namespace: actions
   name: sh-runner-deployment
 spec:
   template:
@@ -13,7 +13,7 @@ spec:
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
 metadata:
-  namespace: actions-runner-system
+  namespace: actions
   name: sh-runner-deployment-autoscaler
 spec:
   scaleTargetRef:
